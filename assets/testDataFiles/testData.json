@@ -1,0 +1,106 @@
+{
+  "sections": [
+    {
+      "sectionTitle": "Australia and its people",
+      "subSections": [
+        {
+          "subSectionTitle":"Aboriginal and Torres Strait Islander peoples"
+        },
+        {
+          "subSectionTitle":"Early days of European settlement"
+        },
+        {
+          "subSectionTitle":"The nation of Australia"
+        },
+        {
+          "subSectionTitle":"Australia’s states and territories"
+        },
+        {
+          "subSectionTitle":"Traditions"
+        },
+        {
+          "subSectionTitle":"Important days for Australians"
+        },
+        {
+          "subSectionTitle":"Australia’s flags"
+        },
+        {
+          "subSectionTitle":"Australia’s symbols"
+        },
+        {
+          "subSectionTitle":"Australia’s national anthem"
+        }
+      ]
+    },
+    {
+      "sectionTitle": "Australia's democratic beliefs, rights and liberties",
+      "subSections": [
+        {
+          "subSectionTitle":"Our democratic beliefs"
+        },
+        {
+          "subSectionTitle":"Our freedoms"
+        },
+        {
+          "subSectionTitle":"Our equalities"
+        },
+        {
+          "subSectionTitle":"Responsibilities and privileges of Australian citizenship"
+        },
+        {
+          "subSectionTitle":"Participating in Australian society"
+        }
+      ]
+    },
+    {
+      "sectionTitle": "Government and the law in Australia",
+      "subSections": [
+        {
+          "subSectionTitle":"How do I have my say?"
+        },
+        {
+          "subSectionTitle":"How did we establish our system of government?"
+        },
+        {
+          "subSectionTitle":"How is the power of government controlled?"
+        },
+        {
+          "subSectionTitle":"Who is Australia’s Head of State?"
+        },
+        {
+          "subSectionTitle":"Who are some of Australia’s leaders?"
+        },
+        {
+          "subSectionTitle":"How is Australia governed?"
+        },
+        {
+          "subSectionTitle":"What do the three levels of government do?"
+        },
+        {
+          "subSectionTitle":"What role do political parties play in the way Australia is governed?"
+        },
+        {
+          "subSectionTitle":"How is the Australian Government formed?"
+        },
+        {
+          "subSectionTitle":"How are laws made?"
+        },
+        {
+          "subSectionTitle":"How are laws enforced?"
+        }
+      ]
+    },
+    {
+      "sectionTitle": "Australian values",
+      "subSections": [
+        {
+          "subSectionTitle":"Our values"
+        },
+        {
+          "subSectionTitle":"Our community"
+        }
+      ]
+    }
+
+  ]
+}

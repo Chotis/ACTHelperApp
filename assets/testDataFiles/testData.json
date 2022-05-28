@@ -1,13 +1,38 @@
 {
-  "sections": [
+  "testableSections": [
     {
       "sectionTitle": "Australia and its people",
       "subSections": [
         {
-          "subSectionTitle":"Aboriginal and Torres Strait Islander peoples"
+          "subSectionTitle":"Aboriginal and Torres Strait Islander peoples",
+          "keyPoints": [
+            {
+              "point": "Australia’s first inhabitants are the Aboriginal and Torres Strait Islander peoples."
+            },
+            {
+              "point": "Aboriginal people are from mainland Australia and Tasmania."
+            },
+            {
+              "point": "Aboriginal peoples arrived in Australia between 65,000 and 40,000 years ago."
+            },
+            {
+              "point": "Torres Strait Islander people are from islands between the northern tip of Queensland and Papua New Guinea."
+            }
+          ]
         },
         {
-          "subSectionTitle":"Early days of European settlement"
+          "subSectionTitle":"Early days of European settlement",
+          "keyPoints": [
+            {
+              "point": "European settlement started when the first 11 convict ships, which became known as the ‘First Fleet’, arrived from Great Britain on 26 January 1788."
+            },
+            {
+              "point": "The first Governor of the colony of New South Wales was Captain Arthur Phillip."
+            },
+            {
+              "point": "Early free settlers came from Great Britain and Ireland. This British and Irish heritage has had a major influence on Australia’s recent history, culture and politics."
+            }
+          ]
         },
         {
           "subSectionTitle":"The nation of Australia"

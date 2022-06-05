@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "panayiotis.moutzouris" "\0"
-            VALUE "FileDescription", "An app that contains summarised points of the Australian Citizenship test material" "\0"
+            VALUE "FileDescription", "act_revision_app" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "australian_citizenship_test_prep" "\0"
+            VALUE "InternalName", "act_revision_app" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2022 panayiotis.moutzouris. All rights reserved." "\0"
-            VALUE "OriginalFilename", "australian_citizenship_test_prep.exe" "\0"
-            VALUE "ProductName", "australian_citizenship_test_prep" "\0"
+            VALUE "OriginalFilename", "act_revision_app.exe" "\0"
+            VALUE "ProductName", "act_revision_app" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

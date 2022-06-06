@@ -1,26 +1,35 @@
 import 'dart:convert';
-import 'package:act_revision_app/models/key_points.dart';
-import 'package:act_revision_app/models/sub_sections.dart';
-import 'package:act_revision_app/models/testable_content.dart';
-import 'package:act_revision_app/models/testable_sections.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:expandable/expandable.dart';
+
+var decodedJson;
+Map<String, dynamic> content = {};
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  //get json from assets, decode and add to map
+  final String response =
+      await rootBundle.loadString('assets/testDataFiles/testData.json');
+  decodedJson = await jsonDecode(response);
+  content = decodedJson;
+
   runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
+  static const String _title = 'Australian Citizenship Test Prep';
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Australian Citizenship Test Prep',
+      title: _title,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Australian Citizenship Test Prep'),
+      home: const MyHomePage(title: _title),
     );
   }
 }
@@ -33,72 +42,876 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  //var data = await rootBundle.loadString('assets/testDatafiles/testData.json');
-  //var jsonContent = jsonDecode(data);
-  //TestableContent test = TestableContent.fromJson(json);
-  Map<String, dynamic> content = {};
+  var data;
 
   // Fetch content from the json file
-  Future<void> readJson() async {
-    final String response =
-        await rootBundle.loadString('assets/testDataFiles/testData.json');
-    final data = await jsonDecode(response);
+  void ImNotSure() {
     setState(() {
-      content = data;
+      data = "what";
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+    return DefaultTabController(
+      length: 4,
+      child: Scaffold(
+          appBar: AppBar(
+            title: Text(widget.title),
+            bottom: TabBar(
+              tabs: [
+                Tab(icon: Icon(Icons.portrait_outlined)),
+                Tab(icon: Icon(Icons.self_improvement_outlined)),
+                Tab(icon: Icon(Icons.account_balance_outlined)),
+                Tab(icon: Icon(Icons.yard_outlined)),
+              ],
+            ),
+          ),
+          body: Container(
+            child: TabBarView(
+              children: [
+                FirstTabContent(),
+                FirstTabContent(),
+                FirstTabContent(),
+                FirstTabContent(),
+              ],
+            ),
+          )),
+    );
+  }
+}
+
+class FirstTabContent extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ExpandableNotifier(
+        child: ListView(padding: const EdgeInsets.all(10), children: [
+      Center(
+        child: Padding(
+            padding: EdgeInsets.all(20),
+            child: Text(content['testableSections'][0]['sectionTitle'],
+                style: DefaultTextStyle.of(context)
+                    .style
+                    .apply(fontSizeDelta: 10, fontWeightDelta: 10))),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
+      FirstTabContentFirstSection(),
+      FirstTabContentSecondSection(),
+      FirstTabContentThirdSection(),
+      FirstTabContentFourthSection(),
+      FirstTabContentFifthSection(),
+      FirstTabContentSixthSection(),
+      FirstTabContentSeventhSection(),
+      FirstTabContentEighthSection(),
+      FirstTabContentNinthSection()
+    ]));
+  }
+}
+
+class FirstTabContentFirstSection extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ExpandableNotifier(
+        child: Padding(
+      padding: const EdgeInsets.all(10),
+      child: Card(
+        clipBehavior: Clip.antiAlias,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Card(
-              child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
-                const ListTile(
-                  leading: Icon(Icons.album),
-                  title: Text('The Enchanted Nightingale'),
-                  subtitle:
-                      Text('Music by Julie Gable. Lyrics by Sidney Stein.'),
-                )
-              ]),
+            SizedBox(
+              height: 5,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.blue.shade200,
+                  shape: BoxShape.rectangle,
+                ),
+              ),
             ),
-            Card(
-              child: Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
-                const ListTile(
-                  leading: Icon(Icons.album),
-                  title: Text('The Enchanted Nightingale'),
-                  subtitle:
-                      Text('Music by Julie Gable. Lyrics by Sidney Stein.'),
-                )
-              ]),
-            ),
-            Text(
-              'lol' + content['testableSections'][0]['sectionTitle'],
-              style: Theme.of(context).textTheme.headline4,
+            ScrollOnExpand(
+              scrollOnExpand: true,
+              scrollOnCollapse: false,
+              child: ExpandablePanel(
+                theme: const ExpandableThemeData(
+                  headerAlignment: ExpandablePanelHeaderAlignment.center,
+                  tapBodyToCollapse: true,
+                ),
+                header: Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                      content['testableSections'][0]['subSections'][0]
+                          ['subSectionTitle'],
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    )),
+                collapsed: Text(
+                  content['testableSections'][0]['subSections'][0]['keyPoints']
+                      [0]['point'],
+                  softWrap: true,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                expanded: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          content['testableSections'][0]['subSections'][0]
+                              ['keyPoints'][0]['point'],
+                          softWrap: true,
+                          overflow: TextOverflow.fade,
+                        )),
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          content['testableSections'][0]['subSections'][0]
+                              ['keyPoints'][1]['point'],
+                          softWrap: true,
+                          overflow: TextOverflow.fade,
+                        )),
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          content['testableSections'][0]['subSections'][0]
+                              ['keyPoints'][2]['point'],
+                          softWrap: true,
+                          overflow: TextOverflow.fade,
+                        )),
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          content['testableSections'][0]['subSections'][0]
+                              ['keyPoints'][3]['point'],
+                          softWrap: true,
+                          overflow: TextOverflow.fade,
+                        )),
+                  ],
+                ),
+                builder: (_, collapsed, expanded) {
+                  return Padding(
+                    padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                    child: Expandable(
+                      collapsed: collapsed,
+                      expanded: expanded,
+                      theme: const ExpandableThemeData(crossFadePoint: 0),
+                    ),
+                  );
+                },
+              ),
             ),
           ],
         ),
       ),
-      floatingActionButton: ElevatedButton(
-        onPressed: readJson,
-        child: const Text("Load Data"),
+    ));
+  }
+}
+
+class FirstTabContentSecondSection extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ExpandableNotifier(
+        child: Padding(
+      padding: const EdgeInsets.all(10),
+      child: Card(
+        clipBehavior: Clip.antiAlias,
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              height: 5,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.blue.shade200,
+                  shape: BoxShape.rectangle,
+                ),
+              ),
+            ),
+            ScrollOnExpand(
+              scrollOnExpand: true,
+              scrollOnCollapse: false,
+              child: ExpandablePanel(
+                theme: const ExpandableThemeData(
+                  headerAlignment: ExpandablePanelHeaderAlignment.center,
+                  tapBodyToCollapse: true,
+                ),
+                header: Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                      content['testableSections'][0]['subSections'][1]
+                          ['subSectionTitle'],
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    )),
+                collapsed: Text(
+                  content['testableSections'][0]['subSections'][1]['keyPoints']
+                      [0]['point'],
+                  softWrap: true,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                expanded: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          content['testableSections'][0]['subSections'][1]
+                              ['keyPoints'][0]['point'],
+                          softWrap: true,
+                          overflow: TextOverflow.fade,
+                        )),
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          content['testableSections'][0]['subSections'][1]
+                              ['keyPoints'][1]['point'],
+                          softWrap: true,
+                          overflow: TextOverflow.fade,
+                        )),
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          content['testableSections'][0]['subSections'][1]
+                              ['keyPoints'][2]['point'],
+                          softWrap: true,
+                          overflow: TextOverflow.fade,
+                        )),
+                  ],
+                ),
+                builder: (_, collapsed, expanded) {
+                  return Padding(
+                    padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                    child: Expandable(
+                      collapsed: collapsed,
+                      expanded: expanded,
+                      theme: const ExpandableThemeData(crossFadePoint: 0),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ),
-    );
+    ));
+  }
+}
+
+class FirstTabContentThirdSection extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ExpandableNotifier(
+        child: Padding(
+      padding: const EdgeInsets.all(10),
+      child: Card(
+        clipBehavior: Clip.antiAlias,
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              height: 5,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.blue.shade200,
+                  shape: BoxShape.rectangle,
+                ),
+              ),
+            ),
+            ScrollOnExpand(
+              scrollOnExpand: true,
+              scrollOnCollapse: false,
+              child: ExpandablePanel(
+                theme: const ExpandableThemeData(
+                  headerAlignment: ExpandablePanelHeaderAlignment.center,
+                  tapBodyToCollapse: true,
+                ),
+                header: Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                      content['testableSections'][0]['subSections'][1]
+                          ['subSectionTitle'],
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    )),
+                collapsed: Text(
+                  content['testableSections'][0]['subSections'][1]['keyPoints']
+                      [0]['point'],
+                  softWrap: true,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                expanded: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          content['testableSections'][0]['subSections'][1]
+                              ['keyPoints'][0]['point'],
+                          softWrap: true,
+                          overflow: TextOverflow.fade,
+                        )),
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          content['testableSections'][0]['subSections'][1]
+                              ['keyPoints'][1]['point'],
+                          softWrap: true,
+                          overflow: TextOverflow.fade,
+                        )),
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          content['testableSections'][0]['subSections'][1]
+                              ['keyPoints'][2]['point'],
+                          softWrap: true,
+                          overflow: TextOverflow.fade,
+                        )),
+                  ],
+                ),
+                builder: (_, collapsed, expanded) {
+                  return Padding(
+                    padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                    child: Expandable(
+                      collapsed: collapsed,
+                      expanded: expanded,
+                      theme: const ExpandableThemeData(crossFadePoint: 0),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+    ));
+  }
+}
+
+class FirstTabContentFourthSection extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ExpandableNotifier(
+        child: Padding(
+      padding: const EdgeInsets.all(10),
+      child: Card(
+        clipBehavior: Clip.antiAlias,
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              height: 5,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.blue.shade200,
+                  shape: BoxShape.rectangle,
+                ),
+              ),
+            ),
+            ScrollOnExpand(
+              scrollOnExpand: true,
+              scrollOnCollapse: false,
+              child: ExpandablePanel(
+                theme: const ExpandableThemeData(
+                  headerAlignment: ExpandablePanelHeaderAlignment.center,
+                  tapBodyToCollapse: true,
+                ),
+                header: Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                      content['testableSections'][0]['subSections'][1]
+                          ['subSectionTitle'],
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    )),
+                collapsed: Text(
+                  content['testableSections'][0]['subSections'][1]['keyPoints']
+                      [0]['point'],
+                  softWrap: true,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                expanded: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          content['testableSections'][0]['subSections'][1]
+                              ['keyPoints'][0]['point'],
+                          softWrap: true,
+                          overflow: TextOverflow.fade,
+                        )),
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          content['testableSections'][0]['subSections'][1]
+                              ['keyPoints'][1]['point'],
+                          softWrap: true,
+                          overflow: TextOverflow.fade,
+                        )),
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          content['testableSections'][0]['subSections'][1]
+                              ['keyPoints'][2]['point'],
+                          softWrap: true,
+                          overflow: TextOverflow.fade,
+                        )),
+                  ],
+                ),
+                builder: (_, collapsed, expanded) {
+                  return Padding(
+                    padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                    child: Expandable(
+                      collapsed: collapsed,
+                      expanded: expanded,
+                      theme: const ExpandableThemeData(crossFadePoint: 0),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+    ));
+  }
+}
+
+class FirstTabContentFifthSection extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ExpandableNotifier(
+        child: Padding(
+      padding: const EdgeInsets.all(10),
+      child: Card(
+        clipBehavior: Clip.antiAlias,
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              height: 5,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.blue.shade200,
+                  shape: BoxShape.rectangle,
+                ),
+              ),
+            ),
+            ScrollOnExpand(
+              scrollOnExpand: true,
+              scrollOnCollapse: false,
+              child: ExpandablePanel(
+                theme: const ExpandableThemeData(
+                  headerAlignment: ExpandablePanelHeaderAlignment.center,
+                  tapBodyToCollapse: true,
+                ),
+                header: Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                      content['testableSections'][0]['subSections'][1]
+                          ['subSectionTitle'],
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    )),
+                collapsed: Text(
+                  content['testableSections'][0]['subSections'][1]['keyPoints']
+                      [0]['point'],
+                  softWrap: true,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                expanded: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          content['testableSections'][0]['subSections'][1]
+                              ['keyPoints'][0]['point'],
+                          softWrap: true,
+                          overflow: TextOverflow.fade,
+                        )),
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          content['testableSections'][0]['subSections'][1]
+                              ['keyPoints'][1]['point'],
+                          softWrap: true,
+                          overflow: TextOverflow.fade,
+                        )),
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          content['testableSections'][0]['subSections'][1]
+                              ['keyPoints'][2]['point'],
+                          softWrap: true,
+                          overflow: TextOverflow.fade,
+                        )),
+                  ],
+                ),
+                builder: (_, collapsed, expanded) {
+                  return Padding(
+                    padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                    child: Expandable(
+                      collapsed: collapsed,
+                      expanded: expanded,
+                      theme: const ExpandableThemeData(crossFadePoint: 0),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+    ));
+  }
+}
+
+class FirstTabContentSixthSection extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ExpandableNotifier(
+        child: Padding(
+      padding: const EdgeInsets.all(10),
+      child: Card(
+        clipBehavior: Clip.antiAlias,
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              height: 5,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.blue.shade200,
+                  shape: BoxShape.rectangle,
+                ),
+              ),
+            ),
+            ScrollOnExpand(
+              scrollOnExpand: true,
+              scrollOnCollapse: false,
+              child: ExpandablePanel(
+                theme: const ExpandableThemeData(
+                  headerAlignment: ExpandablePanelHeaderAlignment.center,
+                  tapBodyToCollapse: true,
+                ),
+                header: Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                      content['testableSections'][0]['subSections'][1]
+                          ['subSectionTitle'],
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    )),
+                collapsed: Text(
+                  content['testableSections'][0]['subSections'][1]['keyPoints']
+                      [0]['point'],
+                  softWrap: true,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                expanded: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          content['testableSections'][0]['subSections'][1]
+                              ['keyPoints'][0]['point'],
+                          softWrap: true,
+                          overflow: TextOverflow.fade,
+                        )),
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          content['testableSections'][0]['subSections'][1]
+                              ['keyPoints'][1]['point'],
+                          softWrap: true,
+                          overflow: TextOverflow.fade,
+                        )),
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          content['testableSections'][0]['subSections'][1]
+                              ['keyPoints'][2]['point'],
+                          softWrap: true,
+                          overflow: TextOverflow.fade,
+                        )),
+                  ],
+                ),
+                builder: (_, collapsed, expanded) {
+                  return Padding(
+                    padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                    child: Expandable(
+                      collapsed: collapsed,
+                      expanded: expanded,
+                      theme: const ExpandableThemeData(crossFadePoint: 0),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+    ));
+  }
+}
+
+class FirstTabContentSeventhSection extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ExpandableNotifier(
+        child: Padding(
+      padding: const EdgeInsets.all(10),
+      child: Card(
+        clipBehavior: Clip.antiAlias,
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              height: 5,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.blue.shade200,
+                  shape: BoxShape.rectangle,
+                ),
+              ),
+            ),
+            ScrollOnExpand(
+              scrollOnExpand: true,
+              scrollOnCollapse: false,
+              child: ExpandablePanel(
+                theme: const ExpandableThemeData(
+                  headerAlignment: ExpandablePanelHeaderAlignment.center,
+                  tapBodyToCollapse: true,
+                ),
+                header: Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                      content['testableSections'][0]['subSections'][1]
+                          ['subSectionTitle'],
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    )),
+                collapsed: Text(
+                  content['testableSections'][0]['subSections'][1]['keyPoints']
+                      [0]['point'],
+                  softWrap: true,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                expanded: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          content['testableSections'][0]['subSections'][1]
+                              ['keyPoints'][0]['point'],
+                          softWrap: true,
+                          overflow: TextOverflow.fade,
+                        )),
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          content['testableSections'][0]['subSections'][1]
+                              ['keyPoints'][1]['point'],
+                          softWrap: true,
+                          overflow: TextOverflow.fade,
+                        )),
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          content['testableSections'][0]['subSections'][1]
+                              ['keyPoints'][2]['point'],
+                          softWrap: true,
+                          overflow: TextOverflow.fade,
+                        )),
+                  ],
+                ),
+                builder: (_, collapsed, expanded) {
+                  return Padding(
+                    padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                    child: Expandable(
+                      collapsed: collapsed,
+                      expanded: expanded,
+                      theme: const ExpandableThemeData(crossFadePoint: 0),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+    ));
+  }
+}
+
+class FirstTabContentEighthSection extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ExpandableNotifier(
+        child: Padding(
+      padding: const EdgeInsets.all(10),
+      child: Card(
+        clipBehavior: Clip.antiAlias,
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              height: 5,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.blue.shade200,
+                  shape: BoxShape.rectangle,
+                ),
+              ),
+            ),
+            ScrollOnExpand(
+              scrollOnExpand: true,
+              scrollOnCollapse: false,
+              child: ExpandablePanel(
+                theme: const ExpandableThemeData(
+                  headerAlignment: ExpandablePanelHeaderAlignment.center,
+                  tapBodyToCollapse: true,
+                ),
+                header: Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                      content['testableSections'][0]['subSections'][1]
+                          ['subSectionTitle'],
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    )),
+                collapsed: Text(
+                  content['testableSections'][0]['subSections'][1]['keyPoints']
+                      [0]['point'],
+                  softWrap: true,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                expanded: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          content['testableSections'][0]['subSections'][1]
+                              ['keyPoints'][0]['point'],
+                          softWrap: true,
+                          overflow: TextOverflow.fade,
+                        )),
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          content['testableSections'][0]['subSections'][1]
+                              ['keyPoints'][1]['point'],
+                          softWrap: true,
+                          overflow: TextOverflow.fade,
+                        )),
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          content['testableSections'][0]['subSections'][1]
+                              ['keyPoints'][2]['point'],
+                          softWrap: true,
+                          overflow: TextOverflow.fade,
+                        )),
+                  ],
+                ),
+                builder: (_, collapsed, expanded) {
+                  return Padding(
+                    padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                    child: Expandable(
+                      collapsed: collapsed,
+                      expanded: expanded,
+                      theme: const ExpandableThemeData(crossFadePoint: 0),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+    ));
+  }
+}
+
+class FirstTabContentNinthSection extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ExpandableNotifier(
+        child: Padding(
+      padding: const EdgeInsets.all(10),
+      child: Card(
+        clipBehavior: Clip.antiAlias,
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              height: 5,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.blue.shade200,
+                  shape: BoxShape.rectangle,
+                ),
+              ),
+            ),
+            ScrollOnExpand(
+              scrollOnExpand: true,
+              scrollOnCollapse: false,
+              child: ExpandablePanel(
+                theme: const ExpandableThemeData(
+                  headerAlignment: ExpandablePanelHeaderAlignment.center,
+                  tapBodyToCollapse: true,
+                ),
+                header: Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                      content['testableSections'][0]['subSections'][1]
+                          ['subSectionTitle'],
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    )),
+                collapsed: Text(
+                  content['testableSections'][0]['subSections'][1]['keyPoints']
+                      [0]['point'],
+                  softWrap: true,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                expanded: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          content['testableSections'][0]['subSections'][1]
+                              ['keyPoints'][0]['point'],
+                          softWrap: true,
+                          overflow: TextOverflow.fade,
+                        )),
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          content['testableSections'][0]['subSections'][1]
+                              ['keyPoints'][1]['point'],
+                          softWrap: true,
+                          overflow: TextOverflow.fade,
+                        )),
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          content['testableSections'][0]['subSections'][1]
+                              ['keyPoints'][2]['point'],
+                          softWrap: true,
+                          overflow: TextOverflow.fade,
+                        )),
+                  ],
+                ),
+                builder: (_, collapsed, expanded) {
+                  return Padding(
+                    padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                    child: Expandable(
+                      collapsed: collapsed,
+                      expanded: expanded,
+                      theme: const ExpandableThemeData(crossFadePoint: 0),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+    ));
   }
 }

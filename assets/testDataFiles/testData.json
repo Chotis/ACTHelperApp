@@ -35,25 +35,113 @@
           ]
         },
         {
-          "subSectionTitle":"The nation of Australia"
+          "subSectionTitle":"The nation of Australia",
+		  "keyPoints": [
+            {
+              "point": "In 1901, the separate colonies were united into a federation of states called the Commonwealth of Australia. This is also when the national parliament, government and the High Court were established."
+            },
+            {
+              "point": "In 1901, Australia’s population was about four million but this number did not include Aboriginal and Torres Strait Islander peoples until a referendum to include them in 1967."
+            },
+            {
+              "point": "Australia’s national language is English and migrants should learn and use English to help them participate in Australian society."
+            }
+          ]
         },
         {
-          "subSectionTitle":"Australia’s states and territories"
+          "subSectionTitle":"Australia’s states and territories",
+		   "keyPoints": [
+            {
+              "point": "Australia is made up of 6 states and 2 territories"
+            },
+            {
+              "point": "State: New South Wales (NSW)| Capital City: Sydney"
+            },
+            {
+              "point": "State: Victoria (Vic.) | Capital City: Melbourne"
+            },
+            {
+              "point": "State: Queensland (Qld) | Capital City: Brisbane"
+            },
+            {
+              "point": "State: Western Australia (WA) | Capital City: Perth"
+            },
+            {
+              "point": "State: South Australia (SA) | Capital City: Adelaide"
+            },
+            {
+              "point": "State: Tasmania (Tas.) | Capital City: Hobart"
+            },
+            {
+              "point": "Territory: Australian Capital Territory (ACT) | Capital City: Canberra"
+            },
+            {
+              "point": "Territory: Northern Territory (NT) | Capital City: Darwin"
+            }
+          ]
         },
         {
-          "subSectionTitle":"Traditions"
+          "subSectionTitle":"Traditions",
+		   "keyPoints": [
+            {
+              "point": "A Welcome to Country is a cultural practice performed by an Aboriginal or Torres Strait Islander custodian of the local region, welcoming visitors to their traditional land."
+            },
+            {
+              "point": "A Welcome to Country is usually the first item of proceedings to open an event and can take place through many forms, including songs, dances, smoking ceremonies or speeches in traditional language or English."
+            },
+            {
+              "point": "An Acknowledgement of Country is an opportunity to recognise that the gathering is on Aboriginal or Torres Strait Islander land and to pay respects to Traditional Custodians and to Aboriginal and Torres Strait Islander peoples in attendance. Anyone can deliver an Acknowledgement of Country."
+            }
+          ]
         },
         {
-          "subSectionTitle":"Important days for Australians"
+          "subSectionTitle":"Important days for Australians",
+		   "keyPoints": [
+            {
+              "point": "On 26 January each year, we celebrate Australia Day. Australia Day is a public holiday in every state and territory in Australia. It is the anniversary of the arrival of the First Fleet from Great Britain in 1788. During Australia Day celebrations, the Prime Minister announces the Australian of the Year Awards in Canberra."
+            },
+            {
+              "point": "Anzac Day is commemorated on 25 April each year.It is a solemn day when we remember the sacrifice of all Australians who served and died in wars, conficts and peacekeeping operations. Anzac Day is named after the Australian and New Zealand Army Corps, which landed at Gallipoli in Turkey during World War I on 25 April 1915"
+            }
         },
         {
-          "subSectionTitle":"Australia’s flags"
+          "subSectionTitle":"Australia’s flags",
+		   "keyPoints": [
+            {
+              "point": "The Australian National Flag is blue, white and red."
+            },
+            {
+              "point": "The Australian Aboriginal Flag is black, red and yellow."
+            },
+            {
+              "point": "The Torres Strait Islander Flag is green, blue, black and white"
+            }
+          ]
         },
         {
-          "subSectionTitle":"Australia’s symbols"
+          "subSectionTitle":"Australia’s symbols",
+		  "keyPoints": [
+            {
+              "point": "The Commonwealth Coat of Arms is the offcial symbol of the Commonwealth of Australia."
+            },
+            {
+              "point": "Australia’s national fower is the golden wattle."
+            },
+            {
+              "point": "Australia’s national colours are green and gold."
+            },
+			{
+              "point": "The opal is Australia’s national gemstone."
+            }
+		  ]
         },
         {
-          "subSectionTitle":"Australia’s national anthem"
+          "subSectionTitle":"Australia’s national anthem",
+		   "keyPoints": [
+            {
+              "point": "Advance Australia Fair’ is Australia’s national anthem. It is sung on occasions of national importance, including at Australian citizenship ceremonies and major sporting events."
+            }
+          ]
         }
       ]
     },

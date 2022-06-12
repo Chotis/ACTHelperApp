@@ -103,6 +103,7 @@
             {
               "point": "Anzac Day is commemorated on 25 April each year.It is a solemn day when we remember the sacrifice of all Australians who served and died in wars, conficts and peacekeeping operations. Anzac Day is named after the Australian and New Zealand Army Corps, which landed at Gallipoli in Turkey during World War I on 25 April 1915"
             }
+          ]
         },
         {
           "subSectionTitle":"Australia’s flags",
@@ -122,10 +123,10 @@
           "subSectionTitle":"Australia’s symbols",
 		  "keyPoints": [
             {
-              "point": "The Commonwealth Coat of Arms is the offcial symbol of the Commonwealth of Australia."
+              "point": "The Commonwealth Coat of Arms is the official symbol of the Commonwealth of Australia."
             },
             {
-              "point": "Australia’s national fower is the golden wattle."
+              "point": "Australia’s national flower is the golden wattle."
             },
             {
               "point": "Australia’s national colours are green and gold."
@@ -149,13 +150,59 @@
       "sectionTitle": "Australia's democratic beliefs, rights and liberties",
       "subSections": [
         {
-          "subSectionTitle":"Our democratic beliefs"
+          "subSectionTitle":"Our democratic beliefs",
+          "keyPoints": [
+            {
+              "title": "Parliamentary democracy",
+              "point": "As part of this system, the power of the government comes from the Australian people because Australian citizens vote for people to represent them in parliament."
+            },
+            {
+              "title": "The Rule of Law",
+              "point": "All Australians are equal under the law. No person, group or religious rule is above the law."
+            },
+            {
+              "title": "Living peacefully",
+              "point": "Change should occur through discussion, peaceful persuasion, and the democratic process. We reject violence as a way to change a person’s mind or the law."
+            },
+            {
+              "title": "Respect for all individuals regardless of background",
+              "point": "Every individual, regardless of their background, has rights and equality under Australian law. All Australians are expected to treat each other with dignity and respect, regardless of their race, country of origin, gender, sexual orientation, marital status, age, disability, heritage, culture, politics, wealth or religion."
+            }
+          ]
         },
         {
-          "subSectionTitle":"Our freedoms"
+          "subSectionTitle":"Our freedoms",
+          "keyPoints": [
+            {
+              "title": "Freedom of speech",
+              "point": "This means people can say and write what they think, and discuss their ideas with others. Examples are: Peacefully protesting against the government, Criticising the government and campaigning to change the laws."
+            },
+            {
+              "title": "Freedom of Expression",
+              "point": "This means people can express their views, including through art, film, music and literature and are free to meet in public of private places for social or political discussion."
+            },
+            {
+              "title": "Freedom of association",
+              "point": "This is the right to form and join associations to pursue common goals. Examples include: legal organisations, such as a political party, trade unions, religious, cultural or social groups."
+            },
+            {
+              "title": "Freedom of religion",
+              "point": "The government and the law treat all citizens equally, whatever their religion or beliefs. The government in Australia is secular, which means it operates separately from churches or other religious entities. Australia has no official national religion. People in Australia are free to follow any religion they choose. They may also not choose to follow a religion."
+            }
+          ]
         },
         {
-          "subSectionTitle":"Our equalities"
+          "subSectionTitle":"Our equalities",
+          "keyPoints": [
+            {
+              "title": "Gender equality",
+              "point": "Men and women have equal rights in Australia. It is against the law to discriminate against a person because of their gender."
+            },
+            {
+              "title": "Equality of opportunity and a ‘fair go’",
+              "point": "What someone achieves in life should be as a result of their talents, work and effort, rather than their wealth or background."
+            }
+          ]
         },
         {
           "subSectionTitle":"Responsibilities and privileges of Australian citizenship"

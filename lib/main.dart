@@ -71,9 +71,9 @@ class _MyHomePageState extends State<MyHomePage> {
             child: TabBarView(
               children: [
                 FirstTabContent(),
-                FirstTabContent(),
-                FirstTabContent(),
-                FirstTabContent(),
+                SecondTabContent(),
+                ThirdTabContent(),
+                FourthTabContent(),
               ],
             ),
           )),
@@ -107,6 +107,61 @@ class FirstTabContent extends StatelessWidget {
   }
 }
 
+class SecondTabContent extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ExpandableNotifier(
+        child: ListView(padding: const EdgeInsets.all(10), children: [
+      Center(
+        child: Padding(
+            padding: EdgeInsets.all(20),
+            child: Text(content['testableSections'][1]['sectionTitle'],
+                style: DefaultTextStyle.of(context)
+                    .style
+                    .apply(fontSizeDelta: 10, fontWeightDelta: 10))),
+      ),
+      SecondTabContentFirstSection(),
+    ]));
+  }
+}
+
+class ThirdTabContent extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ExpandableNotifier(
+        child: ListView(padding: const EdgeInsets.all(10), children: [
+      Center(
+        child: Padding(
+            padding: EdgeInsets.all(20),
+            child: Text("Work in progress.",
+                style: DefaultTextStyle.of(context)
+                    .style
+                    .apply(fontSizeDelta: 10, fontWeightDelta: 10))),
+      )
+    ]));
+  }
+}
+
+class FourthTabContent extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ExpandableNotifier(
+        child: ListView(padding: const EdgeInsets.all(10), children: [
+      Center(
+        child: Padding(
+            padding: EdgeInsets.all(20),
+            child: Text("Work in progress.",
+                style: DefaultTextStyle.of(context)
+                    .style
+                    .apply(fontSizeDelta: 10, fontWeightDelta: 10))),
+      )
+    ]));
+  }
+}
+
+//Australia and its people
+
+//Aboriginal and Torres Strait Islander peoples
 class FirstTabContentFirstSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -204,6 +259,7 @@ class FirstTabContentFirstSection extends StatelessWidget {
   }
 }
 
+//Early days of European settlement
 class FirstTabContentSecondSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -293,6 +349,7 @@ class FirstTabContentSecondSection extends StatelessWidget {
   }
 }
 
+//The nation of Australia
 class FirstTabContentThirdSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -323,12 +380,12 @@ class FirstTabContentThirdSection extends StatelessWidget {
                 header: Padding(
                     padding: EdgeInsets.all(10),
                     child: Text(
-                      content['testableSections'][0]['subSections'][1]
+                      content['testableSections'][0]['subSections'][2]
                           ['subSectionTitle'],
                       style: Theme.of(context).textTheme.bodyLarge,
                     )),
                 collapsed: Text(
-                  content['testableSections'][0]['subSections'][1]['keyPoints']
+                  content['testableSections'][0]['subSections'][2]['keyPoints']
                       [0]['point'],
                   softWrap: true,
                   maxLines: 2,
@@ -340,7 +397,7 @@ class FirstTabContentThirdSection extends StatelessWidget {
                     Padding(
                         padding: EdgeInsets.only(bottom: 10),
                         child: Text(
-                          content['testableSections'][0]['subSections'][1]
+                          content['testableSections'][0]['subSections'][2]
                               ['keyPoints'][0]['point'],
                           softWrap: true,
                           overflow: TextOverflow.fade,
@@ -348,7 +405,7 @@ class FirstTabContentThirdSection extends StatelessWidget {
                     Padding(
                         padding: EdgeInsets.only(bottom: 10),
                         child: Text(
-                          content['testableSections'][0]['subSections'][1]
+                          content['testableSections'][0]['subSections'][2]
                               ['keyPoints'][1]['point'],
                           softWrap: true,
                           overflow: TextOverflow.fade,
@@ -382,6 +439,7 @@ class FirstTabContentThirdSection extends StatelessWidget {
   }
 }
 
+//Australia’s states and territories
 class FirstTabContentFourthSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -412,12 +470,12 @@ class FirstTabContentFourthSection extends StatelessWidget {
                 header: Padding(
                     padding: EdgeInsets.all(10),
                     child: Text(
-                      content['testableSections'][0]['subSections'][1]
+                      content['testableSections'][0]['subSections'][3]
                           ['subSectionTitle'],
                       style: Theme.of(context).textTheme.bodyLarge,
                     )),
                 collapsed: Text(
-                  content['testableSections'][0]['subSections'][1]['keyPoints']
+                  content['testableSections'][0]['subSections'][3]['keyPoints']
                       [0]['point'],
                   softWrap: true,
                   maxLines: 2,
@@ -429,7 +487,7 @@ class FirstTabContentFourthSection extends StatelessWidget {
                     Padding(
                         padding: EdgeInsets.only(bottom: 10),
                         child: Text(
-                          content['testableSections'][0]['subSections'][1]
+                          content['testableSections'][0]['subSections'][3]
                               ['keyPoints'][0]['point'],
                           softWrap: true,
                           overflow: TextOverflow.fade,
@@ -437,7 +495,7 @@ class FirstTabContentFourthSection extends StatelessWidget {
                     Padding(
                         padding: EdgeInsets.only(bottom: 10),
                         child: Text(
-                          content['testableSections'][0]['subSections'][1]
+                          content['testableSections'][0]['subSections'][3]
                               ['keyPoints'][1]['point'],
                           softWrap: true,
                           overflow: TextOverflow.fade,
@@ -445,8 +503,56 @@ class FirstTabContentFourthSection extends StatelessWidget {
                     Padding(
                         padding: EdgeInsets.only(bottom: 10),
                         child: Text(
-                          content['testableSections'][0]['subSections'][1]
+                          content['testableSections'][0]['subSections'][3]
                               ['keyPoints'][2]['point'],
+                          softWrap: true,
+                          overflow: TextOverflow.fade,
+                        )),
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          content['testableSections'][0]['subSections'][3]
+                              ['keyPoints'][3]['point'],
+                          softWrap: true,
+                          overflow: TextOverflow.fade,
+                        )),
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          content['testableSections'][0]['subSections'][3]
+                              ['keyPoints'][4]['point'],
+                          softWrap: true,
+                          overflow: TextOverflow.fade,
+                        )),
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          content['testableSections'][0]['subSections'][3]
+                              ['keyPoints'][5]['point'],
+                          softWrap: true,
+                          overflow: TextOverflow.fade,
+                        )),
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          content['testableSections'][0]['subSections'][3]
+                              ['keyPoints'][6]['point'],
+                          softWrap: true,
+                          overflow: TextOverflow.fade,
+                        )),
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          content['testableSections'][0]['subSections'][3]
+                              ['keyPoints'][7]['point'],
+                          softWrap: true,
+                          overflow: TextOverflow.fade,
+                        )),
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          content['testableSections'][0]['subSections'][3]
+                              ['keyPoints'][8]['point'],
                           softWrap: true,
                           overflow: TextOverflow.fade,
                         )),
@@ -471,6 +577,7 @@ class FirstTabContentFourthSection extends StatelessWidget {
   }
 }
 
+//Traditions
 class FirstTabContentFifthSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -501,12 +608,12 @@ class FirstTabContentFifthSection extends StatelessWidget {
                 header: Padding(
                     padding: EdgeInsets.all(10),
                     child: Text(
-                      content['testableSections'][0]['subSections'][1]
+                      content['testableSections'][0]['subSections'][4]
                           ['subSectionTitle'],
                       style: Theme.of(context).textTheme.bodyLarge,
                     )),
                 collapsed: Text(
-                  content['testableSections'][0]['subSections'][1]['keyPoints']
+                  content['testableSections'][0]['subSections'][4]['keyPoints']
                       [0]['point'],
                   softWrap: true,
                   maxLines: 2,
@@ -518,7 +625,7 @@ class FirstTabContentFifthSection extends StatelessWidget {
                     Padding(
                         padding: EdgeInsets.only(bottom: 10),
                         child: Text(
-                          content['testableSections'][0]['subSections'][1]
+                          content['testableSections'][0]['subSections'][4]
                               ['keyPoints'][0]['point'],
                           softWrap: true,
                           overflow: TextOverflow.fade,
@@ -526,7 +633,7 @@ class FirstTabContentFifthSection extends StatelessWidget {
                     Padding(
                         padding: EdgeInsets.only(bottom: 10),
                         child: Text(
-                          content['testableSections'][0]['subSections'][1]
+                          content['testableSections'][0]['subSections'][4]
                               ['keyPoints'][1]['point'],
                           softWrap: true,
                           overflow: TextOverflow.fade,
@@ -534,7 +641,7 @@ class FirstTabContentFifthSection extends StatelessWidget {
                     Padding(
                         padding: EdgeInsets.only(bottom: 10),
                         child: Text(
-                          content['testableSections'][0]['subSections'][1]
+                          content['testableSections'][0]['subSections'][4]
                               ['keyPoints'][2]['point'],
                           softWrap: true,
                           overflow: TextOverflow.fade,
@@ -560,6 +667,7 @@ class FirstTabContentFifthSection extends StatelessWidget {
   }
 }
 
+//Important days for Australians
 class FirstTabContentSixthSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -590,12 +698,12 @@ class FirstTabContentSixthSection extends StatelessWidget {
                 header: Padding(
                     padding: EdgeInsets.all(10),
                     child: Text(
-                      content['testableSections'][0]['subSections'][1]
+                      content['testableSections'][0]['subSections'][5]
                           ['subSectionTitle'],
                       style: Theme.of(context).textTheme.bodyLarge,
                     )),
                 collapsed: Text(
-                  content['testableSections'][0]['subSections'][1]['keyPoints']
+                  content['testableSections'][0]['subSections'][5]['keyPoints']
                       [0]['point'],
                   softWrap: true,
                   maxLines: 2,
@@ -607,7 +715,7 @@ class FirstTabContentSixthSection extends StatelessWidget {
                     Padding(
                         padding: EdgeInsets.only(bottom: 10),
                         child: Text(
-                          content['testableSections'][0]['subSections'][1]
+                          content['testableSections'][0]['subSections'][5]
                               ['keyPoints'][0]['point'],
                           softWrap: true,
                           overflow: TextOverflow.fade,
@@ -615,19 +723,11 @@ class FirstTabContentSixthSection extends StatelessWidget {
                     Padding(
                         padding: EdgeInsets.only(bottom: 10),
                         child: Text(
-                          content['testableSections'][0]['subSections'][1]
+                          content['testableSections'][0]['subSections'][5]
                               ['keyPoints'][1]['point'],
                           softWrap: true,
                           overflow: TextOverflow.fade,
-                        )),
-                    Padding(
-                        padding: EdgeInsets.only(bottom: 10),
-                        child: Text(
-                          content['testableSections'][0]['subSections'][1]
-                              ['keyPoints'][2]['point'],
-                          softWrap: true,
-                          overflow: TextOverflow.fade,
-                        )),
+                        ))
                   ],
                 ),
                 builder: (_, collapsed, expanded) {
@@ -649,6 +749,7 @@ class FirstTabContentSixthSection extends StatelessWidget {
   }
 }
 
+//Australia’s flags
 class FirstTabContentSeventhSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -679,12 +780,12 @@ class FirstTabContentSeventhSection extends StatelessWidget {
                 header: Padding(
                     padding: EdgeInsets.all(10),
                     child: Text(
-                      content['testableSections'][0]['subSections'][1]
+                      content['testableSections'][0]['subSections'][6]
                           ['subSectionTitle'],
                       style: Theme.of(context).textTheme.bodyLarge,
                     )),
                 collapsed: Text(
-                  content['testableSections'][0]['subSections'][1]['keyPoints']
+                  content['testableSections'][0]['subSections'][6]['keyPoints']
                       [0]['point'],
                   softWrap: true,
                   maxLines: 2,
@@ -696,7 +797,7 @@ class FirstTabContentSeventhSection extends StatelessWidget {
                     Padding(
                         padding: EdgeInsets.only(bottom: 10),
                         child: Text(
-                          content['testableSections'][0]['subSections'][1]
+                          content['testableSections'][0]['subSections'][6]
                               ['keyPoints'][0]['point'],
                           softWrap: true,
                           overflow: TextOverflow.fade,
@@ -704,7 +805,7 @@ class FirstTabContentSeventhSection extends StatelessWidget {
                     Padding(
                         padding: EdgeInsets.only(bottom: 10),
                         child: Text(
-                          content['testableSections'][0]['subSections'][1]
+                          content['testableSections'][0]['subSections'][6]
                               ['keyPoints'][1]['point'],
                           softWrap: true,
                           overflow: TextOverflow.fade,
@@ -712,7 +813,7 @@ class FirstTabContentSeventhSection extends StatelessWidget {
                     Padding(
                         padding: EdgeInsets.only(bottom: 10),
                         child: Text(
-                          content['testableSections'][0]['subSections'][1]
+                          content['testableSections'][0]['subSections'][6]
                               ['keyPoints'][2]['point'],
                           softWrap: true,
                           overflow: TextOverflow.fade,
@@ -738,6 +839,7 @@ class FirstTabContentSeventhSection extends StatelessWidget {
   }
 }
 
+//Australia’s symbols
 class FirstTabContentEighthSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -768,12 +870,12 @@ class FirstTabContentEighthSection extends StatelessWidget {
                 header: Padding(
                     padding: EdgeInsets.all(10),
                     child: Text(
-                      content['testableSections'][0]['subSections'][1]
+                      content['testableSections'][0]['subSections'][7]
                           ['subSectionTitle'],
                       style: Theme.of(context).textTheme.bodyLarge,
                     )),
                 collapsed: Text(
-                  content['testableSections'][0]['subSections'][1]['keyPoints']
+                  content['testableSections'][0]['subSections'][7]['keyPoints']
                       [0]['point'],
                   softWrap: true,
                   maxLines: 2,
@@ -785,7 +887,7 @@ class FirstTabContentEighthSection extends StatelessWidget {
                     Padding(
                         padding: EdgeInsets.only(bottom: 10),
                         child: Text(
-                          content['testableSections'][0]['subSections'][1]
+                          content['testableSections'][0]['subSections'][7]
                               ['keyPoints'][0]['point'],
                           softWrap: true,
                           overflow: TextOverflow.fade,
@@ -793,7 +895,7 @@ class FirstTabContentEighthSection extends StatelessWidget {
                     Padding(
                         padding: EdgeInsets.only(bottom: 10),
                         child: Text(
-                          content['testableSections'][0]['subSections'][1]
+                          content['testableSections'][0]['subSections'][7]
                               ['keyPoints'][1]['point'],
                           softWrap: true,
                           overflow: TextOverflow.fade,
@@ -801,11 +903,19 @@ class FirstTabContentEighthSection extends StatelessWidget {
                     Padding(
                         padding: EdgeInsets.only(bottom: 10),
                         child: Text(
-                          content['testableSections'][0]['subSections'][1]
+                          content['testableSections'][0]['subSections'][7]
                               ['keyPoints'][2]['point'],
                           softWrap: true,
                           overflow: TextOverflow.fade,
                         )),
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          content['testableSections'][0]['subSections'][7]
+                              ['keyPoints'][3]['point'],
+                          softWrap: true,
+                          overflow: TextOverflow.fade,
+                        ))
                   ],
                 ),
                 builder: (_, collapsed, expanded) {
@@ -827,6 +937,7 @@ class FirstTabContentEighthSection extends StatelessWidget {
   }
 }
 
+//Australia’s national anthem
 class FirstTabContentNinthSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -857,12 +968,12 @@ class FirstTabContentNinthSection extends StatelessWidget {
                 header: Padding(
                     padding: EdgeInsets.all(10),
                     child: Text(
-                      content['testableSections'][0]['subSections'][1]
+                      content['testableSections'][0]['subSections'][8]
                           ['subSectionTitle'],
                       style: Theme.of(context).textTheme.bodyLarge,
                     )),
                 collapsed: Text(
-                  content['testableSections'][0]['subSections'][1]['keyPoints']
+                  content['testableSections'][0]['subSections'][8]['keyPoints']
                       [0]['point'],
                   softWrap: true,
                   maxLines: 2,
@@ -874,7 +985,83 @@ class FirstTabContentNinthSection extends StatelessWidget {
                     Padding(
                         padding: EdgeInsets.only(bottom: 10),
                         child: Text(
-                          content['testableSections'][0]['subSections'][1]
+                          content['testableSections'][0]['subSections'][8]
+                              ['keyPoints'][0]['point'],
+                          softWrap: true,
+                          overflow: TextOverflow.fade,
+                        ))
+                  ],
+                ),
+                builder: (_, collapsed, expanded) {
+                  return Padding(
+                    padding: EdgeInsets.only(left: 10, right: 10, bottom: 10),
+                    child: Expandable(
+                      collapsed: collapsed,
+                      expanded: expanded,
+                      theme: const ExpandableThemeData(crossFadePoint: 0),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
+      ),
+    ));
+  }
+}
+
+//Australia's democratic beliefs, rights and liberties
+
+//Our democratic beliefs
+class SecondTabContentFirstSection extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return ExpandableNotifier(
+        child: Padding(
+      padding: const EdgeInsets.all(10),
+      child: Card(
+        clipBehavior: Clip.antiAlias,
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              height: 5,
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.blue.shade200,
+                  shape: BoxShape.rectangle,
+                ),
+              ),
+            ),
+            ScrollOnExpand(
+              scrollOnExpand: true,
+              scrollOnCollapse: false,
+              child: ExpandablePanel(
+                theme: const ExpandableThemeData(
+                  headerAlignment: ExpandablePanelHeaderAlignment.center,
+                  tapBodyToCollapse: true,
+                ),
+                header: Padding(
+                    padding: EdgeInsets.all(10),
+                    child: Text(
+                      content['testableSections'][1]['subSections'][0]
+                          ['subSectionTitle'],
+                      style: Theme.of(context).textTheme.bodyLarge,
+                    )),
+                collapsed: Text(
+                  content['testableSections'][1]['subSections'][0]['keyPoints']
+                      [0]['point'],
+                  softWrap: true,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                expanded: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          content['testableSections'][1]['subSections'][0]
                               ['keyPoints'][0]['point'],
                           softWrap: true,
                           overflow: TextOverflow.fade,
@@ -882,7 +1069,7 @@ class FirstTabContentNinthSection extends StatelessWidget {
                     Padding(
                         padding: EdgeInsets.only(bottom: 10),
                         child: Text(
-                          content['testableSections'][0]['subSections'][1]
+                          content['testableSections'][1]['subSections'][0]
                               ['keyPoints'][1]['point'],
                           softWrap: true,
                           overflow: TextOverflow.fade,
@@ -890,8 +1077,16 @@ class FirstTabContentNinthSection extends StatelessWidget {
                     Padding(
                         padding: EdgeInsets.only(bottom: 10),
                         child: Text(
-                          content['testableSections'][0]['subSections'][1]
+                          content['testableSections'][1]['subSections'][0]
                               ['keyPoints'][2]['point'],
+                          softWrap: true,
+                          overflow: TextOverflow.fade,
+                        )),
+                    Padding(
+                        padding: EdgeInsets.only(bottom: 10),
+                        child: Text(
+                          content['testableSections'][1]['subSections'][0]
+                              ['keyPoints'][3]['point'],
                           softWrap: true,
                           overflow: TextOverflow.fade,
                         )),
